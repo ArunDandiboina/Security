@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
 
 // database encryption (Level 2 authentiation, encryption)
 
-UserSchema.plugin(mongooseEncryption, { secret: process.env.switch.SECRET , encryptedFields: ["password"]});
+UserSchema.plugin(mongooseEncryption, { secret: process.env.SECRET , encryptedFields: ["password"]});
 // save - encrypt
 // find - decrypt (when checking password)
 
