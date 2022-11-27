@@ -1,4 +1,5 @@
 
+require('dotenv').config();
 const express = require('express');
 const bodyparser = require('body-parser');
 const ejs = require('ejs');
@@ -25,8 +26,8 @@ const UserSchema = new mongoose.Schema({
 });
 
 // database encryption (Level 2 authentiation, encryption)
-var secret = "thisIsOurSecret";
-UserSchema.plugin(mongooseEncryption, { secret: secret , encryptedFields: ["password"]});
+
+UserSchema.plugin(mongooseEncryption, { secret: process.env.switch.SECRET , encryptedFields: ["password"]});
 // save - encrypt
 // find - decrypt (when checking password)
 
